@@ -1,0 +1,25 @@
+.container {
+  width: 100%;
+  margin: 2rem;
+  padding: 0.8rem 1.6rem;
+  height: 4rem;
+  font-size: 1.4rem;
+  border: 1px solid var(--light-gray);
+  color: var(--primary-text-color);
+  border-radius: 0.4rem;
+  background-color: var(--white);
+  box-shadow: 0 0.5rem 2.5rem -0.5rem rgba(30, 16, 84, 0.1);
+  transition: box-shadow 0.2s var(--bezier-snappy);
+}
+
+.container:hover {
+  box-shadow: 0 0.5rem 2.5rem -0.5rem rgba(30, 16, 84, 0.2);
+}
+
+.container:focus {
+  outline: 0.1rem solid var(--primary-color);
+}
+
+.container::placeholder {
+  color: var(--dark-gray);
+}

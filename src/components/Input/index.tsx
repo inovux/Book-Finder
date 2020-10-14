@@ -1,5 +1,7 @@
 import React, { ChangeEvent, FC, useState } from 'react'
 
+import styles from './Input.module.css'
+
 interface IInput {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   placeholder: string
@@ -19,6 +21,7 @@ export const Input: FC<IInput> = ({ onChange, placeholder, value }) => {
 
   return (
     <input
+      className={styles.container}
       onChange={handleOnChange}
       placeholder={placeholder}
       type="text"
