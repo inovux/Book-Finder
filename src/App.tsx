@@ -1,14 +1,12 @@
 import React, { FC } from 'react'
 
-import { Button } from './components'
-import { Input } from './components'
 import { Page } from './components'
+import { SearchBar } from './components'
 
 export const App: FC = () => {
   return (
     <Page title="Book Finder">
-      <Input placeholder="Search books" />
-      <Button onClick={() => console.log('button clicked')}>Search</Button>
+      <SearchBar value="" onChange={() => 'change'} onSubmit={() => 'submit'} />
       <h1>list of books:</h1>
       <ul>
         <li>BookCard 1</li>

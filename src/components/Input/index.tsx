@@ -6,9 +6,10 @@ interface IInput {
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
   placeholder: string
   value?: string
+  testId?: string
 }
 
-export const Input: FC<IInput> = ({ onChange, placeholder, value }) => {
+export const Input: FC<IInput> = ({ onChange, placeholder, value, testId }) => {
   const [inputValue, setInputValue] = useState('')
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,6 +22,7 @@ export const Input: FC<IInput> = ({ onChange, placeholder, value }) => {
 
   return (
     <input
+      data-testid={testId}
       className={styles.container}
       onChange={handleOnChange}
       placeholder={placeholder}

@@ -3,12 +3,13 @@ import React, { FC, MouseEvent } from 'react'
 import styles from './Button.module.css'
 
 interface IButton {
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void
+  testId?: string
 }
 
-export const Button: FC<IButton> = ({ children, onClick }) => {
+export const Button: FC<IButton> = ({ children, onClick, testId }) => {
   return (
-    <button className={styles.container} onClick={onClick}>
+    <button data-testid={testId} className={styles.container} onClick={onClick}>
       {children}
     </button>
   )
