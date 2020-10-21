@@ -1,7 +1,7 @@
 import React from 'react'
 import userEvent from '@testing-library/user-event'
-
 import { render } from '@testing-library/react'
+
 import { Input } from './index'
 
 test('renders a text input with a "Search" placeholder', () => {
