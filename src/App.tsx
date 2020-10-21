@@ -6,7 +6,11 @@ import { SearchBar } from './components'
 export const App: FC = () => {
   return (
     <Page title="Book Finder">
-      <SearchBar value="" onChange={() => 'change'} onSubmit={() => 'submit'} />
+      <SearchBar
+        value=""
+        onChange={() => 'change'}
+        onSubmit={(value) => console.log(value)}
+      />
       <h1>list of books:</h1>
       <ul>
         <li>BookCard 1</li>

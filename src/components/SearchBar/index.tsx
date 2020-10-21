@@ -1,21 +1,42 @@
-import React, { ChangeEvent, FC, MouseEvent } from 'react'
+import React, { ChangeEvent, FC, FormEvent } from 'react'
+
+import { Input } from '../index'
+import { Button } from '../index'
 
 import styles from './SearchBar.module.css'
-import { Input } from '../Input'
-import { Button } from '../Button'
 
 interface ISearchBar {
   value: string
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
-  onSubmit: (e: MouseEvent<HTMLButtonElement>) => void
+  onSubmit: (value: string) => void
   testId?: string
 }
 
-export const SearchBar: FC<ISearchBar> = ({ testId }) => {
+export const SearchBar: FC<ISearchBar> = ({
+  onChange,
+  onSubmit,
+  testId,
+  value,
+}) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    onSubmit(value)
+  }
+
   return (
-    <div data-testid={testId} className={styles.container}>
-      <Input testId="searchInput" placeholder="Search books" />
+    <form
+      data-testid={testId}
+      className={styles.container}
+      onSubmit={handleSubmit}
+    >
+      <Input
+        testId="searchInput"
+        onChange={onChange}
+        placeholder="Search books"
+        value={value}
+      />
       <Button testId="searchButton">Search</Button>
-    </div>
+    </form>
   )
 }
