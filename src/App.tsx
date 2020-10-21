@@ -1,10 +1,12 @@
 import React, { FC } from 'react'
 import { Button } from './components/Button'
 import { Input } from './components/Input'
+import { Page } from './components/Page'
 
 export const App: FC = () => {
   return (
-    <div className="App">
+    <Page>
+      <h1>Book Finder</h1>
       <Input placeholder="Search books" />
       <Button onClick={() => console.log('button clicked')}>Search</Button>
       <h1>list of books:</h1>
@@ -15,6 +17,6 @@ export const App: FC = () => {
         <li>BookCard 4</li>
         <li>BookCard 5</li>
       </ul>
-    </div>
+    </Page>
   )
 }
