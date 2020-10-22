@@ -1,4 +1,5 @@
 declare namespace NodeJS {
+  // eslint-disable-next-line @typescript-eslint/interface-name-prefix
   interface ProcessEnv {
     readonly NODE_ENV: 'development' | 'production' | 'test'
     readonly PUBLIC_URL: string
