@@ -34,9 +34,12 @@ export const SearchBar: FC<ISearchBar> = ({
         testId="searchInput"
         onChange={onChange}
         placeholder="Search books"
+        isSearchInput
         value={value}
       />
-      <Button testId="searchButton">Search</Button>
+      <Button isSearchButton testId="searchButton">
+        Search
+      </Button>
     </form>
   )
 }

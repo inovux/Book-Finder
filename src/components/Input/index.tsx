@@ -7,9 +7,16 @@ interface IInput {
   placeholder: string
   value?: string
   testId?: string
+  isSearchInput?: boolean
 }
 
-export const Input: FC<IInput> = ({ onChange, placeholder, value, testId }) => {
+export const Input: FC<IInput> = ({
+  onChange,
+  placeholder,
+  value,
+  testId,
+  isSearchInput,
+}) => {
   const [inputValue, setInputValue] = useState('')
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +30,9 @@ export const Input: FC<IInput> = ({ onChange, placeholder, value, testId }) => {
   return (
     <input
       data-testid={testId}
-      className={styles.container}
+      className={`${styles.container} ${
+        isSearchInput ? styles.searchInput : ''
+      }`}
       onChange={handleOnChange}
       placeholder={placeholder}
       type="text"
