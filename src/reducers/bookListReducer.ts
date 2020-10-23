@@ -13,6 +13,11 @@ export const bookListReducer = (state: IBookListState, action: IAction) => {
         ...state,
         books: action.payload.books,
       }
+    case BookListActionTypes.SET_IS_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload.isLoading,
+      }
     default:
       return state
   }

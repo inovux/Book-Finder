@@ -9,7 +9,7 @@ const setSearchQuery = (query: string) => {
   }
 }
 
-export const setBooks = (books: any[]) => {
+const setBooks = (books: any[]) => {
   return {
     type: BookListActionTypes.SET_BOOKS,
     payload: {
@@ -18,7 +18,17 @@ export const setBooks = (books: any[]) => {
   }
 }
 
+const setIsLoading = (isLoading: boolean) => {
+  return {
+    type: BookListActionTypes.SET_IS_LOADING,
+    payload: {
+      isLoading,
+    },
+  }
+}
+
 export const BookListActions = {
   setSearchQuery,
   setBooks,
+  setIsLoading,
 }

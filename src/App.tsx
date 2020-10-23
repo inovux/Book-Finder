@@ -1,13 +1,19 @@
 import React, { ChangeEvent, FC } from 'react'
 
-import { Page, SearchBar } from './components'
+import { Loader, Page, SearchBar } from './components'
 import { BookListContainer } from './containers'
 
 export const App: FC = () => {
   return (
     <Page title="Book Finder">
       <BookListContainer>
-        {({ books, searchQuery, setSearchQuery, getBooksBySearchTerm }) => {
+        {({
+          books,
+          searchQuery,
+          setSearchQuery,
+          getBooksBySearchTerm,
+          isLoading,
+        }) => {
           const handleSearchQuery = (e: ChangeEvent<HTMLInputElement>) => {
             setSearchQuery(e.currentTarget.value)
           }
@@ -20,11 +26,15 @@ export const App: FC = () => {
                 onSubmit={getBooksBySearchTerm}
               />
               <h1>list of books:</h1>
-              <ul>
-                {books.map((book) => {
-                  return <li key={book.id}>{book.volumeInfo.title}</li>
-                })}
-              </ul>
+              {isLoading ? (
+                <Loader />
+              ) : (
+                <ul>
+                  {books.map((book) => {
+                    return <li key={book.id}>{book.volumeInfo.title}</li>
+                  })}
+                </ul>
+              )}
             </>
           )
         }}

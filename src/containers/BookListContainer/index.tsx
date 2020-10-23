@@ -9,6 +9,7 @@ interface IInjectedBookListRenderProps {
   searchQuery: string
   setSearchQuery: (query: string) => void
   getBooksBySearchTerm: (searchTerm: string) => void
+  isLoading: boolean
 }
 
 interface IBookListContainer {
@@ -19,11 +20,13 @@ export interface IBookListState {
   // TODO: Add IBook type that is returned from API
   books: any[]
   searchQuery: string
+  isLoading: boolean
 }
 
 const initialBookListState = {
   books: [],
   searchQuery: '',
+  isLoading: false,
 }
 
 export const BookListContainer = ({ children }: IBookListContainer) => {
@@ -33,6 +36,8 @@ export const BookListContainer = ({ children }: IBookListContainer) => {
   )
 
   const getBooksBySearchTerm = async (searchTerm: string) => {
+    dispatch(BookListActions.setIsLoading(true))
+
     try {
       const { data } = await booksApi.get('/volumes', {
         params: {
@@ -41,16 +46,23 @@ export const BookListContainer = ({ children }: IBookListContainer) => {
       })
 
       dispatch(BookListActions.setBooks(data.items))
+      dispatch(BookListActions.setIsLoading(false))
     } catch {
       console.log('ERROR')
     }
   }
 
-  const { books, searchQuery } = booksList
+  const { books, searchQuery, isLoading } = booksList
 
   const setSearchQuery = (query: string) => {
     dispatch(BookListActions.setSearchQuery(query))
   }
 
-  return children({ books, searchQuery, setSearchQuery, getBooksBySearchTerm })
+  return children({
+    books,
+    searchQuery,
+    setSearchQuery,
+    getBooksBySearchTerm,
+    isLoading,
+  })
 }
