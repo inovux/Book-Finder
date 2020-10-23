@@ -37,7 +37,7 @@ export const SearchBar: FC<ISearchBar> = ({
         isSearchInput
         value={value}
       />
-      <Button isSearchButton testId="searchButton">
+      <Button disabled={!value} isSearchButton testId="searchButton">
         Search
       </Button>
     </form>

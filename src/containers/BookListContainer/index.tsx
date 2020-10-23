@@ -45,7 +45,7 @@ export const BookListContainer = ({ children }: IBookListContainer) => {
     try {
       const { data } = await booksApi.get('/volumes', {
         params: {
-          q: searchTerm,
+          q: `intitle:${searchTerm}`,
         },
       })
 
