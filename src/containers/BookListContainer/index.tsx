@@ -1,12 +1,14 @@
-import React, { FC, useReducer } from 'react'
+import { useReducer } from 'react'
 
 import { BookListActions } from '../../actions'
 import { bookListReducer } from '../../reducers'
+import { booksApi } from '../../api'
 
 interface IInjectedBookListRenderProps {
-  books: {}[]
+  books: any[]
   searchQuery: string
   setSearchQuery: (query: string) => void
+  getBooksBySearchTerm: (searchTerm: string) => void
 }
 
 interface IBookListContainer {
@@ -15,7 +17,7 @@ interface IBookListContainer {
 
 export interface IBookListState {
   // TODO: Add IBook type that is returned from API
-  books: {}[]
+  books: any[]
   searchQuery: string
 }
 
@@ -24,11 +26,25 @@ const initialBookListState = {
   searchQuery: '',
 }
 
-export const BookListContainer: FC<IBookListContainer> = ({ children }) => {
+export const BookListContainer = ({ children }: IBookListContainer) => {
   const [booksList, dispatch] = useReducer(
     bookListReducer,
     initialBookListState
   )
+
+  const getBooksBySearchTerm = async (searchTerm: string) => {
+    try {
+      const { data } = await booksApi.get('/volumes', {
+        params: {
+          q: searchTerm,
+        },
+      })
+
+      dispatch(BookListActions.setBooks(data.items))
+    } catch {
+      console.log('ERROR')
+    }
+  }
 
   const { books, searchQuery } = booksList
 
@@ -36,5 +52,5 @@ export const BookListContainer: FC<IBookListContainer> = ({ children }) => {
     dispatch(BookListActions.setSearchQuery(query))
   }
 
-  return children({ books, searchQuery, setSearchQuery })
+  return children({ books, searchQuery, setSearchQuery, getBooksBySearchTerm })
 }

@@ -5,4 +5,5 @@ export interface IAction {
 
 export enum BookListActionTypes {
   SET_SEARCH_QUERY = 'SET_SEARCH_QUERY',
+  SET_BOOKS = 'SET_BOOKS',
 }

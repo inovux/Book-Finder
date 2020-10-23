@@ -7,7 +7,7 @@ export const App: FC = () => {
   return (
     <Page title="Book Finder">
       <BookListContainer>
-        {({ searchQuery, setSearchQuery }) => {
+        {({ books, searchQuery, setSearchQuery, getBooksBySearchTerm }) => {
           const handleSearchQuery = (e: ChangeEvent<HTMLInputElement>) => {
             setSearchQuery(e.currentTarget.value)
           }
@@ -17,15 +17,13 @@ export const App: FC = () => {
               <SearchBar
                 value={searchQuery}
                 onChange={handleSearchQuery}
-                onSubmit={(value) => console.log(value)}
+                onSubmit={getBooksBySearchTerm}
               />
               <h1>list of books:</h1>
               <ul>
-                <li>BookCard 1</li>
-                <li>BookCard 2</li>
-                <li>BookCard 3</li>
-                <li>BookCard 4</li>
-                <li>BookCard 5</li>
+                {books.map((book) => {
+                  return <li key={book.id}>{book.volumeInfo.title}</li>
+                })}
               </ul>
             </>
           )

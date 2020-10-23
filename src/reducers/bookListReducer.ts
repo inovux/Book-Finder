@@ -8,6 +8,11 @@ export const bookListReducer = (state: IBookListState, action: IAction) => {
         ...state,
         searchQuery: action.payload.query,
       }
+    case BookListActionTypes.SET_BOOKS:
+      return {
+        ...state,
+        books: action.payload.books,
+      }
     default:
       return state
   }
