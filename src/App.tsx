@@ -13,6 +13,7 @@ export const App: FC = () => {
           setSearchQuery,
           getBooksBySearchTerm,
           isLoading,
+          hasError,
         }) => {
           const handleSearchQuery = (e: ChangeEvent<HTMLInputElement>) => {
             setSearchQuery(e.currentTarget.value)
@@ -26,7 +27,9 @@ export const App: FC = () => {
                 onSubmit={getBooksBySearchTerm}
               />
               <h1>list of books:</h1>
-              {isLoading ? (
+              {hasError ? (
+                <div>An error has occurred.</div>
+              ) : isLoading ? (
                 <Loader />
               ) : (
                 <ul>

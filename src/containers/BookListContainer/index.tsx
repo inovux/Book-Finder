@@ -10,6 +10,7 @@ interface IInjectedBookListRenderProps {
   setSearchQuery: (query: string) => void
   getBooksBySearchTerm: (searchTerm: string) => void
   isLoading: boolean
+  hasError: boolean
 }
 
 interface IBookListContainer {
@@ -21,12 +22,14 @@ export interface IBookListState {
   books: any[]
   searchQuery: string
   isLoading: boolean
+  hasError: boolean
 }
 
 const initialBookListState = {
   books: [],
   searchQuery: '',
   isLoading: false,
+  hasError: false,
 }
 
 export const BookListContainer = ({ children }: IBookListContainer) => {
@@ -48,11 +51,12 @@ export const BookListContainer = ({ children }: IBookListContainer) => {
       dispatch(BookListActions.setBooks(data.items))
       dispatch(BookListActions.setIsLoading(false))
     } catch {
-      console.log('ERROR')
+      dispatch(BookListActions.setHasError(true))
+      dispatch(BookListActions.setIsLoading(false))
     }
   }
 
-  const { books, searchQuery, isLoading } = booksList
+  const { books, searchQuery, isLoading, hasError } = booksList
 
   const setSearchQuery = (query: string) => {
     dispatch(BookListActions.setSearchQuery(query))
@@ -64,5 +68,6 @@ export const BookListContainer = ({ children }: IBookListContainer) => {
     setSearchQuery,
     getBooksBySearchTerm,
     isLoading,
+    hasError,
   })
 }

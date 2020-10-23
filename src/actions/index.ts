@@ -27,8 +27,18 @@ const setIsLoading = (isLoading: boolean) => {
   }
 }
 
+const setHasError = (hasError: boolean) => {
+  return {
+    type: BookListActionTypes.SET_HAS_ERROR,
+    payload: {
+      hasError,
+    },
+  }
+}
+
 export const BookListActions = {
   setSearchQuery,
   setBooks,
   setIsLoading,
+  setHasError,
 }

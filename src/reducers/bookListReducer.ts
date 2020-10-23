@@ -18,6 +18,11 @@ export const bookListReducer = (state: IBookListState, action: IAction) => {
         ...state,
         isLoading: action.payload.isLoading,
       }
+    case BookListActionTypes.SET_HAS_ERROR:
+      return {
+        ...state,
+        hasError: action.payload.hasError,
+      }
     default:
       return state
   }
