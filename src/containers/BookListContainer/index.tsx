@@ -40,6 +40,7 @@ export const BookListContainer = ({ children }: IBookListContainer) => {
 
   const getBooksBySearchTerm = async (searchTerm: string) => {
     dispatch(BookListActions.setIsLoading(true))
+    dispatch(BookListActions.setHasError(false))
 
     try {
       const { data } = await booksApi.get('/volumes', {

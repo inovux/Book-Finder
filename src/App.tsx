@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FC } from 'react'
 
-import { Loader, Page, SearchBar } from './components'
+import { ErrorBox, Loader, Page, SearchBar } from './components'
 import { BookListContainer } from './containers'
 
 export const App: FC = () => {
@@ -28,7 +28,7 @@ export const App: FC = () => {
               />
               <h1>list of books:</h1>
               {hasError ? (
-                <div>An error has occurred.</div>
+                <ErrorBox message="An error has occurred." />
               ) : isLoading ? (
                 <Loader />
               ) : (
