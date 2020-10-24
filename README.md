@@ -3,5 +3,7 @@
 ### TODO:
 * Add BookCard component;
 * Create BookCardList component;
-* Setup API Requests for books;
-* Use debounce functionality from another package;
+* Make sure everything is responsive;
+* Handle case when no books returned;
+* Turn off zoom in on mobile when clicking input;
+* Write README;
