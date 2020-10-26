@@ -49,6 +49,13 @@ export const BookListContainer = ({ children }: IBookListContainer) => {
         },
       })
 
+      if (data.totalItems === 0) {
+        dispatch(
+          BookListActions.setBooks([{ id: 'noBooks', text: 'No books found' }])
+        )
+        return dispatch(BookListActions.setIsLoading(false))
+      }
+
       dispatch(BookListActions.setBooks(data.items))
       dispatch(BookListActions.setIsLoading(false))
     } catch {

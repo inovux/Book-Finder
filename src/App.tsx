@@ -2,7 +2,6 @@ import React, { ChangeEvent, FC } from 'react'
 
 import { BookList, ErrorBox, Loader, Page, SearchBar } from './components'
 import { BookListContainer } from './containers'
-import { BookCard } from './components/BookCard'
 
 export const App: FC = () => {
   return (
@@ -32,30 +31,7 @@ export const App: FC = () => {
               ) : isLoading ? (
                 <Loader />
               ) : (
-                <BookList>
-                  {books.map((book) => {
-                    const {
-                      authors,
-                      imageLinks,
-                      previewLink,
-                      title,
-                      publisher,
-                    } = book.volumeInfo
-
-                    console.log(authors)
-
-                    return (
-                      <BookCard
-                        key={book.id}
-                        author={authors || 'Unknown'}
-                        bookUrl={previewLink}
-                        imageUrl={imageLinks && imageLinks.smallThumbnail}
-                        publishedBy={publisher}
-                        title={title}
-                      />
-                    )
-                  })}
-                </BookList>
+                <BookList books={books} />
               )}
             </>
           )
