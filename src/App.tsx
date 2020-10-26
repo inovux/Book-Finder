@@ -1,7 +1,8 @@
 import React, { ChangeEvent, FC } from 'react'
 
-import { ErrorBox, Loader, Page, SearchBar } from './components'
+import { BookList, ErrorBox, Loader, Page, SearchBar } from './components'
 import { BookListContainer } from './containers'
+import { BookCard } from './components/BookCard'
 
 export const App: FC = () => {
   return (
@@ -26,17 +27,35 @@ export const App: FC = () => {
                 onChange={handleSearchQuery}
                 onSubmit={getBooksBySearchTerm}
               />
-              <h1>list of books:</h1>
               {hasError ? (
                 <ErrorBox message="An error has occurred." />
               ) : isLoading ? (
                 <Loader />
               ) : (
-                <ul>
+                <BookList>
                   {books.map((book) => {
-                    return <li key={book.id}>{book.volumeInfo.title}</li>
+                    const {
+                      authors,
+                      imageLinks,
+                      previewLink,
+                      title,
+                      publisher,
+                    } = book.volumeInfo
+
+                    console.log(authors)
+
+                    return (
+                      <BookCard
+                        key={book.id}
+                        author={authors || 'Unknown'}
+                        bookUrl={previewLink}
+                        imageUrl={imageLinks && imageLinks.smallThumbnail}
+                        publishedBy={publisher}
+                        title={title}
+                      />
+                    )
                   })}
-                </ul>
+                </BookList>
               )}
             </>
           )

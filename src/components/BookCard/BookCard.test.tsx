@@ -13,6 +13,10 @@ test('should render image', () => {
       publishedBy="Kentucky publishing"
     />
   )
+
+  const image = getByTestId('bookCardImage')
+
+  expect(image).toBeInTheDocument()
 })
 
 test('should render author name', () => {
@@ -25,6 +29,10 @@ test('should render author name', () => {
       publishedBy="Kentucky publishing"
     />
   )
+
+  const author = getByTestId('bookCardAuthor')
+
+  expect(author).toBeInTheDocument()
 })
 
 test('should render published by text', () => {
@@ -37,6 +45,10 @@ test('should render published by text', () => {
       publishedBy="Kentucky publishing"
     />
   )
+
+  const publisher = getByTestId('bookCardPublisher')
+
+  expect(publisher).toBeInTheDocument()
 })
 
 test('should render title', () => {
@@ -49,6 +61,10 @@ test('should render title', () => {
       publishedBy="Kentucky publishing"
     />
   )
+
+  const title = getByTestId('bookCardTitle')
+
+  expect(title).toBeInTheDocument()
 })
 
 test('should render button', () => {
@@ -61,4 +77,8 @@ test('should render button', () => {
       publishedBy="Kentucky publishing"
     />
   )
+
+  const button = getByTestId('bookCardButton')
+
+  expect(button).toBeInTheDocument()
 })
