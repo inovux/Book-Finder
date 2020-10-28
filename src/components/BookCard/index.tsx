@@ -28,12 +28,16 @@ export const BookCard: FC<IBookCard> = ({
         data-testid="bookCardImage"
         src={imageUrl}
       />
-      <p data-testid="bookCardAuthor" className={styles.author}>
-        By: {author}
-      </p>
-      <p data-testid="bookCardPublisher" className={styles.publishedby}>
-        Published by: {publishedBy}
-      </p>
+      {author ? (
+        <p data-testid="bookCardAuthor" className={styles.author}>
+          By: {author}
+        </p>
+      ) : null}
+      {publishedBy ? (
+        <p data-testid="bookCardPublisher" className={styles.publishedby}>
+          Published by: {publishedBy}
+        </p>
+      ) : null}
       <a href={bookUrl} className={styles.button}>
         <Button testId="bookCardButton">See this Book</Button>
       </a>

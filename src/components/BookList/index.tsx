@@ -34,7 +34,7 @@ export const BookList: FC<IBooksList> = ({ books }) => {
         return (
           <BookCard
             key={book.id}
-            author={authors || 'Unknown'}
+            author={authors}
             bookUrl={previewLink}
             imageUrl={imageLinks && imageLinks.smallThumbnail}
             publishedBy={publisher}
