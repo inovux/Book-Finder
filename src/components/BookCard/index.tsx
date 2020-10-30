@@ -27,6 +27,7 @@ export const BookCard: FC<IBookCard> = ({
         height={196}
         data-testid="bookCardImage"
         src={imageUrl}
+        className={styles.image}
       />
       <div className={styles.description}>
         {author ? (

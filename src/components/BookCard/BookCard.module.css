@@ -18,3 +18,8 @@
 .description {
   margin-top: auto;
 }
+
+.image {
+  margin: auto 0;
+  margin-bottom: 2rem;
+}
