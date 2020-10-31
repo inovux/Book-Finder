@@ -22,3 +22,24 @@
 .image {
   margin: auto 0 2rem 0;
 }
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    width: 31.333%;
+    margin: 1%;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .container {
+    width: 48%;
+    margin: 1%;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .container {
+    width: 98%;
+    margin: 1%;
+  }
+}
